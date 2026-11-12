@@ -1,0 +1,1291 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --aerospace-bg: #030712;
+    --aerospace-surface: #0b1120;
+    --aerospace-surface-highlight: #111b30;
+    --aerospace-border: #1e293b;
+    --aerospace-cyan: #06b6d4;
+    --aerospace-teal: #14b8a6;
+    --aerospace-gold: #f59e0b;
+  }
+
+  html {
+    font-size: 16.5px;
+    font-feature-settings: "tnum", "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (min-width: 768px) {
+    html {
+      font-size: 17px;
+    }
+  }
+
+  body {
+    background-color: transparent !important;
+    color: #f1f5f9;
+    font-family: 'Inter', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+
+  /* Monospace typography override for authentic flight telemetry */
+  code, kbd, samp, pre, .font-mono {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace !important;
+  }
+
+  /* Custom subtle scrollbar for telemetry logs */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #060a12;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1e293b;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #38bdf8;
+  }
+}
+
+/* =========================================================
+   AEROSPACE SPACE-ORIENTED COMMAND BUTTONS & THEME UTILITIES
+   ========================================================= */
+
+.radar-grid {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+}
+
+.glow-cyan {
+  box-shadow: 0 0 24px -4px rgba(6, 182, 212, 0.4);
+}
+
+.glow-amber {
+  box-shadow: 0 0 24px -4px rgba(245, 158, 11, 0.4);
+}
+
+.glow-rose {
+  box-shadow: 0 0 24px -4px rgba(244, 63, 94, 0.4);
+}
+
+/* =========================================================
+   AEROSPACE LIQUID GLASS BUTTONS (REFERENCE-MATCHED HUD)
+   ========================================================= */
+
+/* =========================================================
+   AEROSPACE WHITE GLASSY BUTTONS (VISIONOS / FROSTED LIQUID GLASS)
+   True frosted white glass surface, pristine white 1px border,
+   sharp specular top highlights, frosted backdrop refraction,
+   and crisp bright white typography and icons.
+   ========================================================= */
+
+/* Primary Tactical Command Button (Luminous White Glass) */
+.space-cmd-btn-primary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.45);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+.space-cmd-btn-primary svg {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+.space-cmd-btn-primary:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.22) 100%) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.6), 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+  transform: translateY(-1px);
+}
+.space-cmd-btn-primary:active {
+  transform: translateY(0.5px);
+  background: rgba(255, 255, 255, 0.24) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Tactical Space Command Button (White Glassy Amber Alert) */
+.space-cmd-btn-amber {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 18px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+.space-cmd-btn-amber svg {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+.space-cmd-btn-amber:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55), 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+  transform: translateY(-1px);
+}
+.space-cmd-btn-amber:active {
+  transform: translateY(0.5px);
+  background: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* Tactical Space Command Button (White Glass Neutral / Secondary) */
+.space-cmd-btn-secondary {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.06) 100%) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.40) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.8), inset 0 -1px 1px rgba(255, 255, 255, 0.1), 0 0 14px rgba(255, 255, 255, 0.16), 0 4px 14px rgba(0, 0, 0, 0.28) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+}
+.space-cmd-btn-secondary svg {
+  color: #ffffff !important;
+}
+.space-cmd-btn-secondary:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.14) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.90) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 22px rgba(255, 255, 255, 0.4), 0 6px 18px rgba(0, 0, 0, 0.32) !important;
+  transform: translateY(-1px);
+}
+.space-cmd-btn-secondary:active {
+  transform: translateY(0.5px);
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* Avionics Toggle Switch Pill */
+.space-switch-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+  position: relative;
+}
+
+/* Aerodynamic Space Capsule Round Button */
+.space-capsule-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.625rem 1.25rem;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+  cursor: pointer;
+  user-select: none;
+}
+
+.space-capsule-btn-primary {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.45);
+}
+.space-capsule-btn-primary svg {
+  color: #ffffff !important;
+}
+
+.space-capsule-btn-primary:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.22) 100%) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.6) !important;
+  transform: translateY(-1px) scale(1.01);
+}
+
+.space-capsule-btn-primary:active {
+  transform: translateY(0.5px) scale(0.99);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35), 0 0 12px rgba(255, 255, 255, 0.25) !important;
+}
+
+.space-capsule-btn-emerald {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  color: #ffffff !important;
+  font-weight: 800;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 18px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+.space-capsule-btn-emerald:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+  transform: translateY(-1px) scale(1.01);
+}
+
+.space-capsule-btn-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.06) 100%) !important;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.40) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.8), 0 0 14px rgba(255, 255, 255, 0.16), 0 4px 14px rgba(0, 0, 0, 0.28) !important;
+}
+
+.space-capsule-btn-glass:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.14) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.90) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 22px rgba(255, 255, 255, 0.4), 0 6px 18px rgba(0, 0, 0, 0.3) !important;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   UNIVERSAL WHITE GLASSY BUTTONS
+   Applied to EVERY clickable button across the entire app
+   ========================================================= */
+
+button,
+[role="button"],
+a[role="button"],
+input[type="button"],
+input[type="submit"] {
+  position: relative;
+  backdrop-filter: blur(14px) saturate(160%) !important;
+  -webkit-backdrop-filter: blur(14px) saturate(160%) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.80), inset 0 -1px 1px rgba(255, 255, 255, 0.12), 0 0 14px rgba(255, 255, 255, 0.18), 0 3px 10px rgba(0, 0, 0, 0.28);
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-image 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              color 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.15s cubic-bezier(0.16, 1, 0.3, 1),
+              opacity 0.2s ease;
+}
+
+/* Universal Buttons with no explicit background get frosted white glass surface */
+button:not([class*="bg-"]),
+[role="button"]:not([class*="bg-"]) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0.06) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.40);
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+button:not([class*="bg-"]):hover,
+[role="button"]:not([class*="bg-"]):hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.32) 0%, rgba(255, 255, 255, 0.14) 100%);
+  border-color: rgba(255, 255, 255, 0.90);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 255, 255, 0.38), 0 6px 18px rgba(0, 0, 0, 0.32);
+  color: #ffffff;
+}
+
+/* Explicit transparent / ghost buttons get frosted white glass boundary */
+button.bg-transparent,
+[role="button"].bg-transparent {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.04) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+button.bg-transparent:hover,
+[role="button"].bg-transparent:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.90) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 255, 255, 0.35) !important;
+  color: #ffffff !important;
+}
+
+/* Hover State: Frosted White Illumination & Specular Edge Highlight */
+button:not(:disabled):hover,
+[role="button"]:not([aria-disabled="true"]):hover {
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 22px rgba(255, 255, 255, 0.40), 0 6px 18px -2px rgba(0, 0, 0, 0.35);
+}
+
+/* Active / Pressed State */
+button:not(:disabled):active,
+[role="button"]:not([aria-disabled="true"]):active {
+  transform: translateY(0.5px);
+  box-shadow: inset 0 1.5px 3px rgba(0, 0, 0, 0.35), 0 0 10px rgba(255, 255, 255, 0.25);
+}
+
+/* Focus Outline State */
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: none !important;
+  border-color: #ffffff !important;
+  box-shadow: 0 0 0 2px rgba(2, 6, 23, 0.9), 0 0 20px rgba(255, 255, 255, 0.6), inset 0 1px 2px rgba(255, 255, 255, 0.9) !important;
+}
+
+/* --- Color Identity White Glassy Button Variants --- */
+
+/* Slate & Neutral Dark Buttons */
+button.bg-slate-900, button.bg-slate-800, button.bg-slate-950, button.bg-slate-700,
+button.bg-gray-900, button.bg-gray-800, button.bg-zinc-900, button.bg-zinc-800 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.06) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.38) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.8), 0 0 14px rgba(255, 255, 255, 0.16), 0 3px 10px rgba(0, 0, 0, 0.28) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+button.bg-slate-900:hover, button.bg-slate-800:hover, button.bg-slate-950:hover, button.bg-slate-700:hover,
+button.bg-gray-900:hover, button.bg-gray-800:hover, button.bg-zinc-900:hover, button.bg-zinc-800:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.30) 0%, rgba(255, 255, 255, 0.14) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.90) !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 22px rgba(255, 255, 255, 0.4), 0 6px 16px rgba(0, 0, 0, 0.32) !important;
+}
+
+/* Cyan / Vital Buttons — Frosted White Glass */
+button.bg-cyan-600, button.bg-cyan-500, button.bg-cyan-400, button.bg-cyan-700, button.bg-cyan-800, button.bg-cyan-900, button.bg-cyan-950 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 20px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.45);
+}
+button.bg-cyan-600:hover, button.bg-cyan-500:hover, button.bg-cyan-400:hover, button.bg-cyan-700:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.22) 100%) !important;
+  border-color: #ffffff !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.6), 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+}
+button.bg-cyan-600 svg, button.bg-cyan-500 svg, button.bg-cyan-400 svg, .space-cmd-btn-primary svg {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* Emerald Confirmation / Success Buttons — Frosted White Glass */
+button.bg-emerald-600, button.bg-emerald-500, button.bg-emerald-700, button.bg-emerald-800, button.bg-emerald-900, button.bg-emerald-950,
+button.bg-green-600, button.bg-teal-600 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 18px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+button.bg-emerald-600:hover, button.bg-emerald-500:hover, button.bg-teal-600:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+}
+button.bg-emerald-600 svg, button.bg-emerald-500 svg {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* Amber Warning / Diagnostics Buttons — Frosted White Glass */
+button.bg-amber-600, button.bg-amber-500, button.bg-amber-700, button.bg-amber-800, button.bg-amber-900, button.bg-amber-950,
+button.bg-yellow-600 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 18px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+button.bg-amber-600:hover, button.bg-amber-500:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+}
+button.bg-amber-600 svg, button.bg-amber-500 svg {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* Rose Critical / Emergency / Delete Buttons — Frosted White Glass */
+button.bg-rose-600, button.bg-rose-500, button.bg-rose-700, button.bg-rose-800, button.bg-rose-900, button.bg-rose-950,
+button.bg-red-600, button.bg-red-500, button.bg-red-700 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 18px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+button.bg-rose-600:hover, button.bg-rose-500:hover, button.bg-red-600:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+}
+button.bg-rose-600 svg, button.bg-rose-500 svg, button.bg-red-600 svg {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* Purple AI / NeuroLab / Mental Health Buttons — Frosted White Glass */
+button.bg-purple-600, button.bg-purple-500, button.bg-purple-700, button.bg-purple-800, button.bg-purple-900, button.bg-purple-950,
+button.bg-indigo-600, button.bg-indigo-500, button.bg-violet-600 {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), inset 0 -1px 1px rgba(255, 255, 255, 0.15), 0 0 18px rgba(255, 255, 255, 0.28), 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+button.bg-purple-600:hover, button.bg-purple-500:hover, button.bg-indigo-600:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+}
+button.bg-purple-600 svg, button.bg-purple-500 svg, button.bg-indigo-600 svg {
+  color: #ffffff !important;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.5)) drop-shadow(0 0 6px rgba(255, 255, 255, 0.5));
+}
+
+/* --- Gradient Buttons with Translucent White Glass Layers --- */
+button[class*="from-cyan"],
+[role="button"][class*="from-cyan"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 20px rgba(255, 255, 255, 0.28) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.45);
+}
+button[class*="from-cyan"]:hover,
+[role="button"][class*="from-cyan"]:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.22) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 0.6) !important;
+}
+button[class*="from-cyan"] svg {
+  color: #ffffff !important;
+}
+
+button[class*="from-emerald"],
+[role="button"][class*="from-emerald"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 0.28) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+button[class*="from-emerald"]:hover,
+[role="button"][class*="from-emerald"]:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+}
+
+button[class*="from-amber"],
+[role="button"][class*="from-amber"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 0.28) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+button[class*="from-amber"]:hover,
+[role="button"][class*="from-amber"]:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+}
+
+button[class*="from-rose"],
+button[class*="from-red"],
+[role="button"][class*="from-rose"],
+[role="button"][class*="from-red"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 0.28) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+button[class*="from-rose"]:hover,
+button[class*="from-red"]:hover,
+[role="button"][class*="from-rose"]:hover,
+[role="button"][class*="from-red"]:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+}
+
+button[class*="from-purple"],
+[role="button"][class*="from-purple"] {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.10) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.70) !important;
+  color: #ffffff !important;
+  font-weight: 800 !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.95), 0 0 18px rgba(255, 255, 255, 0.28) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 255, 255, 0.4);
+}
+button[class*="from-purple"]:hover,
+[role="button"][class*="from-purple"]:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.40) 0%, rgba(255, 255, 255, 0.20) 100%) !important;
+  border-color: #ffffff !important;
+  box-shadow: inset 0 1px 2.5px rgba(255, 255, 255, 1), 0 0 28px rgba(255, 255, 255, 0.55) !important;
+}
+
+/* Glassmorphism Preserved Disabled Button States */
+button:disabled,
+button[disabled],
+[role="button"][aria-disabled="true"] {
+  opacity: 0.38 !important;
+  background-color: rgba(15, 23, 42, 0.15) !important;
+  border: 1px solid rgba(51, 65, 85, 0.25) !important;
+  color: #64748b !important;
+  backdrop-filter: blur(4px) !important;
+  box-shadow: none !important;
+  transform: none !important;
+  cursor: not-allowed !important;
+}
+
+/* Astronaut Microgravity Orbital Float Animation */
+@keyframes astronaut-float {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translate(-6px, -12px) rotate(0.4deg) scale(1.005);
+  }
+  50% {
+    transform: translate(8px, -18px) rotate(-0.3deg) scale(1.01);
+  }
+  75% {
+    transform: translate(12px, -8px) rotate(0.2deg) scale(1.005);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+.animate-astronaut-float {
+  animation: astronaut-float 24s ease-in-out infinite;
+}
+
+/* Atmospheric Horizon Glow Breathing */
+@keyframes atmospheric-pulse {
+  0%, 100% {
+    opacity: 0.75;
+    filter: drop-shadow(0 0 25px rgba(56, 189, 248, 0.4));
+  }
+  50% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 45px rgba(56, 189, 248, 0.7));
+  }
+}
+
+.animate-atmospheric-pulse {
+  animation: atmospheric-pulse 8s ease-in-out infinite;
+}
+
+/* Subtle Star Twinkle */
+@keyframes star-twinkle {
+  0%, 100% { opacity: 0.2; transform: scale(0.8); }
+  50% { opacity: 0.9; transform: scale(1.2); }
+}
+
+.animate-star-1 {
+  animation: star-twinkle 4s ease-in-out infinite;
+}
+.animate-star-2 {
+  animation: star-twinkle 6s ease-in-out infinite 1.5s;
+}
+.animate-star-3 {
+  animation: star-twinkle 5s ease-in-out infinite 3s;
+}
+
+/* Space Radar Scanning Sweep */
+@keyframes radar-sweep {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(1000%);
+    opacity: 0;
+  }
+}
+
+.animate-radar-sweep {
+  animation: radar-sweep 12s linear infinite;
+}
+
+/* Microgravity Astronaut Float & Gentle Attitude Rotation */
+@keyframes astronaut-float {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(0.8deg);
+  }
+  50% {
+    transform: translateY(-9px) rotate(-0.5deg);
+  }
+  75% {
+    transform: translateY(-4px) rotate(-1.2deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+.animate-astronaut-float {
+  animation: astronaut-float 7s ease-in-out infinite;
+}
+
+@keyframes orbit-pulse {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.02);
+  }
+}
+
+.animate-orbit-pulse {
+  animation: orbit-pulse 6s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* GLOBAL SPACE VIDEO BACKGROUND & READABILITY LAYERING          */
+/* ============================================================ */
+.live-space-background {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.live-space-background video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.space-readability-overlay {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse 90% 80% at 50% 50%, rgba(2, 6, 23, 0.0) 0%, rgba(2, 6, 23, 0.04) 60%, rgba(2, 6, 23, 0.18) 100%);
+}
+
+.astra-application {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ============================================================ */
+/* DYNAMIC SPATIAL MODULE CARDS                                 */
+/* ============================================================ */
+@keyframes ecg-dash {
+  0% {
+    stroke-dashoffset: 200;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.animate-ecg {
+  stroke-dasharray: 200;
+  animation: ecg-dash 2.4s linear infinite;
+}
+
+@keyframes neural-bar-1 {
+  0%, 100% { height: 25%; }
+  50% { height: 85%; }
+}
+@keyframes neural-bar-2 {
+  0%, 100% { height: 70%; }
+  50% { height: 30%; }
+}
+@keyframes neural-bar-3 {
+  0%, 100% { height: 40%; }
+  50% { height: 100%; }
+}
+@keyframes neural-bar-4 {
+  0%, 100% { height: 90%; }
+  50% { height: 35%; }
+}
+@keyframes neural-bar-5 {
+  0%, 100% { height: 50%; }
+  50% { height: 80%; }
+}
+
+.animate-neural-1 { animation: neural-bar-1 1.4s ease-in-out infinite; }
+.animate-neural-2 { animation: neural-bar-2 1.8s ease-in-out infinite 0.2s; }
+.animate-neural-3 { animation: neural-bar-3 1.2s ease-in-out infinite 0.4s; }
+.animate-neural-4 { animation: neural-bar-4 1.6s ease-in-out infinite 0.1s; }
+.animate-neural-5 { animation: neural-bar-5 1.5s ease-in-out infinite 0.3s; }
+
+@keyframes radar-scan-sweep {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-radar-scan {
+  animation: radar-scan-sweep 4s linear infinite;
+}
+
+@keyframes holographic-shimmer {
+  0% { transform: translateX(-100%) rotate(25deg); }
+  100% { transform: translateX(200%) rotate(25deg); }
+}
+.animate-holographic {
+  animation: holographic-shimmer 3.5s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* REALISTIC ORBITAL MOTIONS & AURORAL IONIZATION               */
+/* ============================================================ */
+@keyframes iss-orbit-path {
+  0% {
+    transform: translate3d(-60px, 30px, 0) scale(0.75) rotate(-8deg);
+    opacity: 0.2;
+  }
+  15% {
+    opacity: 0.95;
+  }
+  85% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translate3d(calc(60vw), -40px, 0) scale(0.92) rotate(4deg);
+    opacity: 0.15;
+  }
+}
+
+.iss-orbit-motion {
+  animation: iss-orbit-path 55s linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes satellite-orbit-path {
+  0% {
+    transform: translate3d(40px, -20px, 0) scale(0.7) rotate(6deg);
+    opacity: 0.3;
+  }
+  20% {
+    opacity: 0.9;
+  }
+  80% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate3d(calc(-50vw), 35px, 0) scale(0.85) rotate(-6deg);
+    opacity: 0.2;
+  }
+}
+
+.satellite-orbit-motion {
+  animation: satellite-orbit-path 70s linear infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes aurora-wave-pulse {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scaleY(0.9) skewX(-2deg);
+    filter: blur(28px) hue-rotate(0deg);
+  }
+  50% {
+    opacity: 0.55;
+    transform: scaleY(1.15) skewX(2deg);
+    filter: blur(24px) hue-rotate(25deg);
+  }
+}
+
+.aurora-curtain-pulse {
+  animation: aurora-wave-pulse 14s ease-in-out infinite;
+  will-change: transform, opacity, filter;
+}
+
+@keyframes lunar-subtle-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 25px rgba(255, 255, 255, 0.25)) brightness(1);
+  }
+  50% {
+    filter: drop-shadow(0 0 40px rgba(224, 242, 254, 0.4)) brightness(1.04);
+  }
+}
+
+.lunar-glow-motion {
+  animation: lunar-subtle-glow 8s ease-in-out infinite;
+}
+
+/* ============================================================ */
+/* ASTRA HEALTH — CRYSTAL-CLEAR LIQUID GLASS INTERFACE SYSTEM   */
+/* Insp. Apple Liquid Glass: high transparency, subtle         */
+/* refraction, delicate translucent borders, inner specular    */
+/* highlights, and soft realistic shadows.                     */
+/* ============================================================ */
+
+/* 1. Header & Navigation Command Strips */
+#permanent-command-bar,
+header#permanent-command-bar,
+header.sticky {
+  background: rgba(10, 16, 30, 0.32) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.06), 0 4px 24px rgba(0, 0, 0, 0.16) !important;
+}
+
+#main-navigation-bar,
+nav#main-navigation-bar,
+nav.sticky {
+  background: rgba(8, 14, 28, 0.30) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 20px rgba(0, 0, 0, 0.16) !important;
+}
+
+#global-system-status-bar {
+  background: rgba(6, 12, 24, 0.28) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+/* 2. Desktop Mission Sidebar */
+#desktop-mission-sidebar,
+aside#desktop-mission-sidebar,
+aside {
+  background: rgba(10, 16, 32, 0.28) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.15) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 32px rgba(0, 0, 0, 0.16) !important;
+}
+
+/* 3. Primary Dashboard Cards, Panels & Modules */
+article,
+section#dashboard-header-strip,
+div#simulation-controls-dock,
+.liquid-glass,
+.liquid-glass-card,
+div[class*="rounded-2xl"][class*="bg-slate-900"],
+div[class*="rounded-2xl"][class*="bg-slate-950"],
+div[class*="rounded-2xl"][class*="bg-slate-800"],
+section[class*="rounded-2xl"][class*="bg-slate-900"],
+section[class*="rounded-2xl"][class*="bg-slate-950"],
+section[class*="rounded-2xl"][class*="bg-slate-800"],
+div[class*="h-[calc(100vh"][class*="bg-slate-900"] {
+  background: rgba(12, 19, 36, 0.32) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 8px 32px rgba(0, 0, 0, 0.18) !important;
+}
+
+article:hover,
+div[class*="rounded-2xl"][class*="group"]:hover {
+  border-color: rgba(34, 211, 238, 0.35) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 12px 36px rgba(0, 0, 0, 0.24) !important;
+}
+
+/* ============================================================ */
+/* CRYSTAL-CLEAR LIQUID GLASS: THE 4 CORE MODULES               */
+/* 1. Bio Signal (#physical-health-module, #btn-landing-physical)*/
+/* 2. Neural Signal (#mental-health-module, #btn-landing-mental)*/
+/* 3. Health Dashboard (#astronaut-health-command-center)       */
+/* 4. AI Assistance (#astra-ai-view, #btn-landing-ai)          */
+/* ============================================================ */
+
+/* --- A. LANDING HUB 4 PORTAL CARDS (ULTRA-CLEAR WHITE CRYSTAL GLASS • ZERO BLUR) --- */
+#btn-landing-physical,
+#btn-landing-mental,
+#btn-landing-dashboard,
+#btn-landing-ai {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 60%, rgba(255, 255, 255, 0.02) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.1), 0 4px 16px rgba(0, 0, 0, 0.15) !important;
+}
+
+#btn-landing-physical:hover,
+#btn-landing-mental:hover,
+#btn-landing-dashboard:hover,
+#btn-landing-ai:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 60%, rgba(255, 255, 255, 0.05) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.65) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8), inset 0 -1px 0 rgba(255, 255, 255, 0.15), 0 6px 24px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Landing Quick Actions (Ultra-Clear White Crystal) */
+#landing-quick-mission-btn,
+#landing-quick-settings-btn {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.005) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+#landing-quick-mission-btn:hover,
+#landing-quick-settings-btn:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.02) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.65) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 4px 12px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Landing Check-In Banner Buttons (Ultra-Clear White Crystal) */
+#landing-checkin-banner {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+#btn-landing-review-checkin,
+#btn-landing-update-checkin,
+#btn-landing-start-checkin {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.35) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5) !important;
+}
+#btn-landing-review-checkin:hover,
+#btn-landing-update-checkin:hover,
+#btn-landing-start-checkin:hover {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%) !important;
+  border-color: rgba(255, 255, 255, 0.7) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.75), 0 4px 12px rgba(255, 255, 255, 0.08) !important;
+}
+
+/* --- B. BIO SIGNAL MODULE (#physical-health-module) --- */
+#physical-health-module > div,
+#physical-health-module .grid > div,
+#physical-health-module article,
+#physical-health-module section {
+  background: rgba(10, 18, 36, 0.32) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
+  border: 1px solid rgba(34, 211, 238, 0.32) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.16), 0 8px 32px rgba(0, 0, 0, 0.22) !important;
+}
+#physical-health-module .grid > div:hover,
+#physical-health-module article:hover {
+  border-color: rgba(103, 232, 249, 0.6) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 0 20px rgba(6, 182, 212, 0.25), 0 12px 36px rgba(0, 0, 0, 0.28) !important;
+}
+#physical-health-module .grid .grid > div,
+#physical-health-module div[class*="rounded-xl"] {
+  background: rgba(6, 12, 26, 0.30) !important;
+  backdrop-filter: blur(8px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(130%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+/* --- C. NEURAL SIGNAL MODULE (#mental-health-module) --- */
+#mental-health-module > div,
+#mental-health-module .grid > div,
+#mental-health-module article,
+#mental-health-module section {
+  background: rgba(14, 16, 36, 0.32) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
+  border: 1px solid rgba(192, 132, 252, 0.32) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.16), 0 8px 32px rgba(0, 0, 0, 0.22) !important;
+}
+#mental-health-module .grid > div:hover,
+#mental-health-module article:hover {
+  border-color: rgba(216, 180, 254, 0.6) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 0 20px rgba(168, 85, 247, 0.25), 0 12px 36px rgba(0, 0, 0, 0.28) !important;
+}
+#mental-health-module .grid .grid > div,
+#mental-health-module div[class*="rounded-xl"] {
+  background: rgba(8, 10, 26, 0.30) !important;
+  backdrop-filter: blur(8px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(130%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.14) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+}
+
+/* --- D. HEALTH DASHBOARD MODULE (#astronaut-health-command-center) --- */
+#astronaut-health-command-center article,
+#astronaut-health-command-center section,
+#astronaut-health-command-center > div,
+#astronaut-health-command-center .grid > div,
+#card-physiological-health,
+#card-psychological-health,
+#card-what-changed,
+#card-improve-wellbeing,
+#card-astra-ai,
+#card-milestones,
+#card-space-context,
+#card-why-watching,
+#medical-records-section {
+  background: rgba(10, 18, 36, 0.32) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.16), 0 8px 32px rgba(0, 0, 0, 0.22) !important;
+}
+#astronaut-health-command-center article:hover,
+#astronaut-health-command-center .grid > div:hover {
+  border-color: rgba(34, 211, 238, 0.5) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25), 0 0 20px rgba(6, 182, 212, 0.22), 0 12px 36px rgba(0, 0, 0, 0.28) !important;
+}
+#astronaut-health-command-center div[class*="rounded-xl"],
+#astronaut-health-command-center div[class*="rounded-lg"] {
+  background: rgba(6, 12, 26, 0.28) !important;
+  backdrop-filter: blur(8px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(130%) !important;
+  border-color: rgba(255, 255, 255, 0.14) !important;
+}
+
+/* --- E. AI ASSISTANCE MODULE (#astra-ai-view) --- */
+#astra-ai-view,
+#astra-ai-view > div,
+#astra-ai-view > div > div {
+  background: rgba(10, 18, 36, 0.32) !important;
+  backdrop-filter: blur(10px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(10px) saturate(140%) !important;
+}
+#astra-ai-view > div {
+  border: 1px solid rgba(59, 130, 246, 0.32) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.16), 0 8px 32px rgba(0, 0, 0, 0.22) !important;
+}
+#astra-ai-view .bg-slate-950\/90,
+#astra-ai-view .bg-slate-950,
+#astra-ai-view header,
+#astra-ai-view [class*="border-b"] {
+  background: rgba(6, 12, 26, 0.32) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+#astra-ai-view div[class*="rounded-2xl"][class*="bg-slate-900"],
+#astra-ai-view div[class*="rounded-2xl"][class*="bg-slate-950"] {
+  background: rgba(8, 14, 28, 0.38) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.12), 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+}
+#astra-ai-view div[class*="rounded-2xl"][class*="bg-cyan-950"],
+#astra-ai-view div[class*="rounded-2xl"][class*="bg-cyan-900"],
+#astra-ai-view div[class*="rounded-2xl"][class*="bg-blue-950"] {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.35) 0%, rgba(30, 58, 138, 0.4) 100%) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border: 1px solid rgba(34, 211, 238, 0.38) !important;
+  box-shadow: inset 0 1px 1.5px rgba(255, 255, 255, 0.2), 0 0 16px rgba(6, 182, 212, 0.2) !important;
+}
+
+/* --- ASTRA Intelligence Chat Message Containers (Tilt-Excluded) --- */
+.chat-message-box,
+#astra-ai-view .chat-message-box {
+  transform: none !important;
+  perspective: none !important;
+  transform-style: flat !important;
+  will-change: auto !important;
+}
+.chat-message-box:hover,
+#astra-ai-view .chat-message-box:hover {
+  transform: none !important;
+  rotate: none !important;
+}
+
+/* 4. Nested Sub-Panels, Stat Tiles & Telemetry Blocks */
+div[class*="rounded-xl"][class*="bg-slate-950"],
+div[class*="rounded-xl"][class*="bg-slate-900"],
+div[class*="rounded-xl"][class*="bg-slate-800"],
+div[class*="rounded-lg"][class*="bg-slate-950"],
+div[class*="rounded-lg"][class*="bg-slate-900"],
+div[class*="rounded-lg"][class*="bg-slate-800"],
+div[class*="rounded-2xl"][class*="bg-slate-950\/60"] {
+  background: rgba(8, 14, 28, 0.28) !important;
+  backdrop-filter: blur(6px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(130%) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 5. Modals, Drawers & Dialog Backdrops */
+div.fixed.inset-0[class*="bg-black"],
+div.fixed.inset-0[class*="bg-slate-950"],
+div.fixed.inset-0[class*="backdrop-blur"] {
+  background: rgba(2, 6, 18, 0.48) !important;
+  backdrop-filter: blur(6px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(130%) !important;
+}
+
+div#quick-checkin-modal,
+div.fixed.inset-0 div[class*="max-w-"][class*="rounded-2xl"],
+div.fixed.inset-0 div[class*="max-w-"][class*="rounded-xl"],
+div[role="dialog"] {
+  background: rgba(12, 18, 34, 0.62) !important;
+  backdrop-filter: blur(12px) saturate(150%) !important;
+  -webkit-backdrop-filter: blur(12px) saturate(150%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.20) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22), 0 24px 64px rgba(0, 0, 0, 0.45) !important;
+}
+
+div#quick-checkin-modal > div:first-child,
+div[role="dialog"] > div:first-child {
+  background: rgba(8, 14, 28, 0.45) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+}
+
+/* 6. AI Chat Interface Glass Bubbles */
+div[class*="max-w-3xl"][class*="rounded-2xl"][class*="bg-slate-950"] {
+  background: rgba(12, 18, 34, 0.38) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border: 1px solid rgba(255, 255, 255, 0.18) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+}
+
+div[class*="max-w-3xl"][class*="rounded-2xl"][class*="bg-cyan-600"] {
+  background: linear-gradient(135deg, rgba(8, 145, 178, 0.45) 0%, rgba(14, 116, 144, 0.55) 100%) !important;
+  backdrop-filter: blur(8px) saturate(140%) !important;
+  -webkit-backdrop-filter: blur(8px) saturate(140%) !important;
+  border: 1px solid rgba(34, 211, 238, 0.4) !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 8px 24px rgba(6, 182, 212, 0.2) !important;
+}
+
+/* 7. Color-Tinted Status Liquid Glass Panels */
+div[class*="bg-cyan-950"],
+span[class*="bg-cyan-950"],
+section[class*="bg-cyan-950"] {
+  background-color: rgba(8, 145, 178, 0.18) !important;
+  border-color: rgba(34, 211, 238, 0.32) !important;
+  backdrop-filter: blur(6px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(130%) !important;
+}
+
+div[class*="bg-emerald-950"],
+span[class*="bg-emerald-950"],
+section[class*="bg-emerald-950"] {
+  background-color: rgba(16, 185, 129, 0.18) !important;
+  border-color: rgba(52, 211, 153, 0.32) !important;
+  backdrop-filter: blur(6px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(130%) !important;
+}
+
+div[class*="bg-amber-950"],
+span[class*="bg-amber-950"],
+section[class*="bg-amber-950"] {
+  background-color: rgba(245, 158, 11, 0.18) !important;
+  border-color: rgba(251, 191, 36, 0.32) !important;
+  backdrop-filter: blur(6px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(130%) !important;
+}
+
+div[class*="bg-rose-950"],
+span[class*="bg-rose-950"],
+section[class*="bg-rose-950"],
+div[class*="bg-red-950"] {
+  background-color: rgba(244, 63, 94, 0.18) !important;
+  border-color: rgba(251, 113, 133, 0.32) !important;
+  backdrop-filter: blur(6px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(130%) !important;
+}
+
+div[class*="bg-purple-950"],
+span[class*="bg-purple-950"],
+section[class*="bg-purple-950"] {
+  background-color: rgba(168, 85, 247, 0.18) !important;
+  border-color: rgba(192, 132, 252, 0.32) !important;
+  backdrop-filter: blur(6px) saturate(130%) !important;
+  -webkit-backdrop-filter: blur(6px) saturate(130%) !important;
+}
+
+/* 8. Form Inputs & Textareas — Crisp Glass Controls */
+input[type="text"],
+input[type="number"],
+input[type="search"],
+input[type="date"],
+input[type="time"],
+textarea,
+select {
+  background-color: rgba(12, 18, 34, 0.42) !important;
+  backdrop-filter: blur(6px) !important;
+  -webkit-backdrop-filter: blur(6px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.16) !important;
+  color: #f8fafc !important;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.25) !important;
+  transition: all 0.2s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: rgba(34, 211, 238, 0.7) !important;
+  box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.25), inset 0 1px 2px rgba(0, 0, 0, 0.25) !important;
+  background-color: rgba(15, 23, 42, 0.58) !important;
+}
+
+
+

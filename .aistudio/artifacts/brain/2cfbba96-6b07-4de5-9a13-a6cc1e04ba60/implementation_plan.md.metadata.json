@@ -1,0 +1,6 @@
+{
+  "summary":  "Implementation plan for adding a collapsible NASA Space Data Search bar and rich results panel inside the ASTRA Health AI Assistant view, backed by a server-side NASA API proxy covering all 12 requested space data tools.",
+  "updatedAt":  "2026-11-12T18:37:50.022230042Z",
+  "requestFeedback":  true,
+  "userFacing":  true
+}
