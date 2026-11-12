@@ -1,0 +1,1834 @@
+# ASTRA HEALTH — MASTER IMPLEMENTATION PROMPT
+## Interactive Anatomical Health Visualization + Unified Health Data Integration
+
+You are modifying the existing **ASTRA Health — Astronaut Health Intelligence System**.
+
+Your task is to add and integrate **ONE major new feature inside the existing Health Dashboard**:
+
+> **An interactive, animated, full-body human health visualization that is directly connected to the health data already entered throughout ASTRA Health.**
+
+This is an **integration task**, NOT a redesign, rewrite, or replacement of the existing application.
+
+---
+
+# 0. ABSOLUTE RULE — PRESERVE THE EXISTING APPLICATION
+
+Before changing any code, inspect the existing ASTRA Health codebase and understand:
+
+- Current Health Dashboard implementation
+- Existing health data structures
+- Existing health input forms
+- Existing health calculations
+- Existing Health Index calculations
+- Existing baseline system
+- Existing telemetry
+- Existing alerts
+- Existing AI functionality
+- Existing NASA data
+- Existing crew data
+- Existing offline storage
+- Existing synchronization
+- Existing navigation
+- Existing UI components
+- Existing animations
+- Existing styling system
+- Existing APIs/services
+- Existing routes
+- Existing responsive behavior
+
+Do NOT immediately rewrite the dashboard.
+
+Do NOT replace existing architecture simply because a different implementation would be easier.
+
+The current application is the source of truth.
+
+---
+
+# 1. DO NOT REDESIGN THE EXISTING HEALTH DASHBOARD
+
+The existing Health Dashboard must remain functionally and visually intact.
+
+Preserve:
+
+- Existing layout
+- Existing cards
+- Existing health metrics
+- Existing vital signs
+- Existing charts
+- Existing graphs
+- Existing buttons
+- Existing filters
+- Existing navigation
+- Existing health-index calculations
+- Existing data
+- Existing API calls
+- Existing AI functionality
+- Existing alerts
+- Existing baseline information
+- Existing animations
+- Existing glass/crystal styling
+- Existing colors
+- Existing typography
+- Existing spacing
+- Existing responsive behavior
+
+Do NOT:
+
+- Remove existing sections
+- Replace existing components unnecessarily
+- Move existing controls unnecessarily
+- Rewrite existing health logic
+- Replace existing Health Index calculations
+- Replace existing AI functionality
+- Replace NASA integrations
+- Replace existing data sources
+- Create an unrelated new dashboard
+
+The new feature must behave as an **additional interactive layer inside the current Health Dashboard**.
+
+---
+
+# 2. PRIMARY NEW FEATURE
+
+Add:
+
+## INTERACTIVE FULL-BODY HEALTH VISUALIZATION
+
+The user should see a polished, front-facing, full human anatomical visualization from approximately:
+
+**Head → Torso → Legs → Feet**
+
+The visualization should be:
+
+- Futuristic
+- Medical/scientific
+- Premium
+- Clean
+- NASA/astronaut compatible
+- Clearly understandable
+- Interactive
+- Responsive
+- Consistent with ASTRA Health's existing design language
+
+It should NOT look like:
+
+- A cartoon
+- A game
+- A childish human avatar
+- An excessively neon graphic
+- A decorative 3D object with no data connection
+
+The body is a functional health-data interface.
+
+---
+
+# 3. THE MOST IMPORTANT DATA PRINCIPLE
+
+The body visualization must NOT become a second health system.
+
+It must use the existing ASTRA Health data as its source of truth.
+
+The architecture should conceptually be:
+
+```text
+Existing Health Inputs
+        ↓
+Existing / Shared Health Data Layer
+        ↓
+Validation + Storage
+        ↓
+Existing Health Calculations
+        ↓
+Existing Baselines / Trends / Alerts
+        ↓
+Interactive Body Visualization
+        ↓
+Selected Anatomical Region
+        ↓
+Relevant Existing Health Data
+```
+
+The body visualization is therefore a new way of **exploring existing health information**.
+
+Do not create duplicate health calculations merely for the body.
+
+---
+
+# 4. UNIFIED HEALTH DATA ARCHITECTURE
+
+ASTRA Health currently contains health-related inputs across multiple modules.
+
+Where multiple modules collect the same metric, they must use one canonical underlying metric.
+
+For example:
+
+- Heart Rate entered in Daily Check-In
+- Heart Rate shown in Physical Health
+- Heart Rate displayed under Heart
+- Heart Rate used by the existing Health Index
+
+must refer to the same underlying health measurement rather than four unrelated values.
+
+Similarly:
+
+- Sleep
+- SpO₂
+- Exercise
+- Core Temperature
+- Hydration
+- Stress
+- Fatigue
+- Mood
+- Radiation
+- Cognitive measurements
+
+must not become disconnected duplicate datasets.
+
+---
+
+# 5. COMPLETE HEALTH DATA INPUT CATALOG
+
+Integrate the following existing/required health data sources.
+
+Do not remove any of them.
+
+---
+
+## MODULE A — DAILY HEALTH CHECK-IN
+
+### STEP 1 — PHYSICAL TELEMETRY
+
+#### Heart Rate
+- BPM
+- Map to: Heart / Cardiovascular
+
+#### Blood Pressure
+- Systolic
+- Diastolic
+- mmHg
+- Map to: Heart / Blood-Vascular System
+
+#### Blood Oxygen Saturation
+- SpO₂ %
+- Map to: Lungs / Respiratory System
+
+#### Exercise Duration
+- Minutes
+- Map to: Musculoskeletal / Cardiovascular / Whole Body
+
+#### Physical Recovery Index
+- 1–5 OR normalized 0–100%
+- Map to: Whole Body / Recovery
+
+If both representations are used, preserve the original value and use a normalized internal representation for calculations.
+
+---
+
+## MODULE A — STEP 2 — MENTAL WELLBEING & CIRCADIAN
+
+### Sleep Duration
+- Hours
+- Minutes
+- Map to: Brain / Recovery
+
+### Subjective Mood Index
+- 1–5
+- Map to: Brain / Mental Wellbeing
+
+### Operational Stress Level
+- 1–5
+- 1 = Zen
+- 5 = Severe
+- Map to: Brain / Nervous System
+
+### Vital Energy Level
+- 1–5
+- 1 = Depleted
+- 5 = Peak
+- Map to: Whole Body / Recovery
+
+### Perceived Fatigue
+- 1–5
+- 1 = Fresh
+- 5 = Exhausted
+- Map to: Brain / Whole Body / Recovery
+
+### Spaceflight Reflection Notes
+- Personal journal
+- Operational notes
+- Map to: Mental/Operational Context
+
+Do not turn journal text directly into a medical diagnosis.
+
+AI may summarize journal themes, but deterministic Health Index calculations must not depend solely on free-text interpretation.
+
+---
+
+# 6. CLINICAL DOCUMENT & OCR
+
+Support:
+
+- PDF
+- PNG
+- JPG/JPEG
+
+The existing clinical OCR system should remain intact.
+
+Extracted data may include:
+
+- Vital signs
+- Laboratory results
+- Biomarkers
+- CBC
+- Metabolic panel
+- Other supported clinical values
+
+The workflow must remain:
+
+```text
+Upload
+↓
+OCR
+↓
+Extract
+↓
+Review
+↓
+Verify
+↓
+Apply
+```
+
+Never silently treat OCR output as confirmed medical data.
+
+Never silently overwrite manually entered values.
+
+---
+
+# 7. PHYSICAL HEALTH MODULE
+
+## CARDIOVASCULAR
+
+### Resting Heart Rate
+- BPM
+- Body: Heart
+
+### HRV
+- RMSSD
+- milliseconds
+- Body: Heart / Autonomic Nervous System
+
+### Blood Pressure
+- Systolic / Diastolic
+- mmHg
+- Body: Cardiovascular System
+
+---
+
+## RESPIRATORY
+
+### Oxygen Saturation
+- SpO₂ %
+- Body: Lungs
+
+### Respiratory Rate
+- Breaths/minute
+- Body: Lungs
+
+---
+
+## THERMOREGULATION & HYDRATION
+
+### Core Body Temperature
+- °C
+- Body: Whole Body / Thermoregulation
+
+### Hydration Balance Index
+- %
+- Body: Whole Body
+
+---
+
+# 8. MENTAL HEALTH MODULE
+
+## SLEEP & RECOVERY
+
+Track:
+
+- Sleep Hours
+- Sleep Minutes
+- Sleep Quality
+- 1–5 stars
+- Perceived Recovery
+- 1–5
+
+Map primarily to:
+
+**Brain + Recovery + Whole Body**
+
+---
+
+## DAILY SUBJECTIVE WELLBEING
+
+Track:
+
+- Operational Stress
+- Vital Energy
+- Perceived Fatigue
+- Mood
+- Spaceflight Journal
+
+Map appropriately to:
+
+**Brain / Nervous System / Recovery / Whole Body**
+
+---
+
+## CHECK-IN HISTORY
+
+Preserve:
+
+- Historical records
+- Date/time
+- Category
+- Values
+- Source
+- Editing
+- Deletion
+
+Record deletion must require confirmation.
+
+---
+
+# 9. SLEEP & RECOVERY ARCHITECTURE
+
+Track:
+
+- Sleep duration
+- Sleep quality
+- Rest consistency
+- Recovery consistency
+- Sleep trends
+
+Default target:
+
+**8.0 hours**
+
+However, do not treat 8.0 hours as an immutable medical requirement.
+
+It should remain configurable through mission/profile settings if the existing architecture supports configuration.
+
+Support:
+
+- Current sleep
+- Personal baseline
+- 7-day trend
+- 14-day trend
+- Recovery trend
+
+---
+
+# 10. FITNESS, ACTIVITY & ERGONOMICS
+
+Track:
+
+### Exercise Duration
+- Minutes
+
+### Resistance Training
+- Resistance Load
+- kg
+
+### Aerobic Output
+- Mechanical Output
+- Watts
+
+### Biothermal Monitoring
+- Core Temperature
+- °C
+- Hydration Balance
+- %
+
+Map these to:
+
+- Musculoskeletal system
+- Cardiovascular system
+- Whole body
+- Recovery
+
+---
+
+# 11. RADIATION EXPOSURE
+
+Radiation must remain a dedicated health dimension.
+
+Do NOT incorrectly merge radiation exposure into cardiovascular, fitness, or mental-health scores.
+
+Support:
+
+## Measurement Type
+
+- Absorbed Dose
+- Dose Equivalent
+- Dose Rate
+- Cumulative Exposure
+
+## Units
+
+- μSv
+- mSv
+- Sv
+- μGy
+- mGy
+- Gy
+- μSv/h
+- mSv/h
+- mGy/h
+
+Preserve original value/unit and use a normalized representation internally where appropriate.
+
+## Measurement Source
+
+- Personal Dosimeter
+- Manual Entry
+- Environmental Sensor
+- NASA Uplink
+- Imported Log
+
+## Location
+
+- Command Cupola
+- Sleep Quarters
+- Habitat
+- EVA Suit
+
+## Instrument Identifier
+
+Example:
+
+`RAD-CREW-01`
+
+## Mission Phase
+
+Store:
+
+- Mission phase
+- Operational notes
+- Timestamp
+
+Map radiation primarily to:
+
+**Whole Body → Radiation Exposure**
+
+---
+
+# 12. NEURO LAB / OFFLINE COGNITIVE BENCHMARKS
+
+Preserve and integrate:
+
+## PVT
+
+Track:
+
+- Reaction Time Latency
+- ms
+- Vigilance calibration
+
+Map to:
+
+**Brain → Cognitive Readiness**
+
+---
+
+## SPATIAL N-BACK
+
+Track:
+
+- Working-memory performance
+- Sequence recall
+- Accuracy
+- Relevant cognitive metrics
+
+Map to:
+
+**Brain → Working Memory**
+
+---
+
+## CPT
+
+Track:
+
+- Target discrimination
+- Accuracy
+- Inhibitory control
+- Performance
+
+Map to:
+
+**Brain → Cognitive Control**
+
+---
+
+## NEURO-SYMBOLIC COGNITIVE BATTERY
+
+Track:
+
+- Visual pattern matching
+- Auditory pattern matching
+- Readiness tests
+
+Map to:
+
+**Brain → Cognitive Readiness**
+
+Cognitive performance must be compared primarily against the crew member's personal historical baseline where sufficient data exists.
+
+---
+
+# 13. SETTINGS & MISSION PROFILE
+
+Preserve the existing mission/profile configuration.
+
+Support:
+
+### Crew Profile
+
+- Astronaut Call Sign
+- Mission Role
+- Personal Baseline Ranges
+
+### Health Engine Parameters
+
+- Baseline Calibration
+- Threshold Parameters
+- Synthetic Simulation Controls
+
+Clearly distinguish:
+
+**Personal Baseline**
+
+from:
+
+**Safety Threshold**
+
+from:
+
+**Synthetic Simulation Parameter**
+
+Do not mix these concepts.
+
+---
+
+# 14. CANONICAL HEALTH RECORD
+
+Where appropriate, use a shared health-record structure conceptually similar to:
+
+```text
+HealthRecord
+├── id
+├── crewMemberId
+├── timestamp
+├── category
+├── metric
+├── value
+├── unit
+├── normalizedValue
+├── source
+├── bodyRegion
+├── confidence
+├── verificationStatus
+├── missionPhase
+├── notes
+└── baselineComparison
+```
+
+Do not blindly create this exact structure if the existing project already has an equivalent model.
+
+First reuse existing types.
+
+Only extend existing types where genuinely necessary.
+
+---
+
+# 15. BODY ANATOMICAL REGIONS
+
+The interactive body should contain sensible selectable regions.
+
+At minimum consider:
+
+- Whole Body
+- Brain / Head
+- Eyes
+- Heart
+- Lungs
+- Liver
+- Digestive System / Stomach
+- Kidneys
+- Spine
+- Musculoskeletal System
+- Blood / Circulatory System
+- Skin / Body Surface
+- Legs / Lower Body
+
+Do not overcrowd the visualization.
+
+Not every anatomical structure needs a separate complex model.
+
+The regions should be meaningful from the perspective of the available ASTRA health data.
+
+---
+
+# 16. DATA → BODY MAPPING
+
+Create a clear mapping layer.
+
+Examples:
+
+```text
+Heart Rate
+→ Heart
+→ Cardiovascular
+
+Resting HR
+→ Heart
+→ Cardiovascular
+
+HRV
+→ Heart / Autonomic System
+→ Recovery / Cardiovascular
+
+Blood Pressure
+→ Heart / Vascular System
+→ Cardiovascular
+
+SpO₂
+→ Lungs
+→ Respiratory
+
+Respiratory Rate
+→ Lungs
+→ Respiratory
+
+Sleep
+→ Brain / Whole Body
+→ Recovery
+
+Mood
+→ Brain
+→ Mental Wellbeing
+
+Stress
+→ Brain / Nervous System
+→ Mental Wellbeing
+
+Fatigue
+→ Brain / Whole Body
+→ Recovery
+
+PVT
+→ Brain
+→ Cognitive Readiness
+
+N-Back
+→ Brain
+→ Cognitive Readiness
+
+CPT
+→ Brain
+→ Cognitive Readiness
+
+Exercise
+→ Musculoskeletal / Heart / Whole Body
+→ Fitness
+
+Resistance Load
+→ Musculoskeletal
+→ Fitness
+
+Aerobic Output
+→ Cardiovascular / Musculoskeletal
+→ Fitness
+
+Core Temperature
+→ Whole Body
+→ Thermoregulation
+
+Hydration
+→ Whole Body
+→ Hydration
+
+Radiation
+→ Whole Body
+→ Radiation
+
+Clinical/Lab data
+→ Appropriate physiological region when a safe mapping exists
+```
+
+---
+
+# 17. INTERACTIVE BODY BEHAVIOR
+
+When the user hovers over an anatomical region:
+
+- Highlight it subtly
+- Show an anatomical label
+- Show interactive cursor/focus state
+- Do not obscure the existing dashboard
+
+When the user clicks/taps:
+
+1. Highlight the selected region.
+2. Show a subtle pulse/indicator.
+3. Open/display contextual health information.
+4. Display relevant existing metrics.
+5. Display current Health Index where one already exists.
+6. Display baseline comparison.
+7. Display recent trend where available.
+8. Display status.
+9. Display last update.
+10. Display source where useful.
+
+---
+
+# 18. EXAMPLE — HEART
+
+When Heart is selected, show something like:
+
+```text
+HEART
+
+Health Index: [EXISTING VALUE]
+
+Status: [EXISTING STATUS]
+
+Current Metrics
+• Heart Rate
+• Resting HR
+• HRV
+• Blood Pressure
+
+Baseline
+• Personal baseline
+• Deviation
+
+Trend
+• Recent trend
+
+Last Updated
+• Timestamp
+
+Source
+• Check-In / Sensor / Clinical / etc.
+```
+
+IMPORTANT:
+
+Use existing data and existing calculations.
+
+Do not fabricate values.
+
+Do not create a fake Health Index simply to populate the UI.
+
+If no existing Heart Health Index exists, clearly label any newly calculated value as a derived summary and only calculate it if the existing available data supports a safe deterministic calculation.
+
+---
+
+# 19. EXAMPLE — LUNGS
+
+Display:
+
+```text
+LUNGS
+
+Health Index: [Existing or clearly labeled derived value]
+
+Current Metrics
+• SpO₂
+• Respiratory Rate
+
+Baseline
+• Personal baseline
+
+Trend
+• Recent trend
+
+Status
+• Existing health status where available
+```
+
+---
+
+# 20. EXAMPLE — BRAIN
+
+Display:
+
+```text
+BRAIN / NEURAL HEALTH
+
+Current Metrics
+• Sleep
+• Mood
+• Stress
+• Fatigue
+• Energy
+
+Cognitive Readiness
+• PVT
+• N-Back
+• CPT
+• Neuro-symbolic tests
+
+Recovery
+• Sleep quality
+• Recovery rating
+
+Baseline
+• Personal cognitive/mental baseline
+
+Trend
+• Recent performance
+```
+
+Do not diagnose neurological or psychiatric conditions.
+
+---
+
+# 21. WHOLE BODY VIEW
+
+Provide a clear:
+
+**WHOLE BODY / OVERVIEW**
+
+selection.
+
+This can display:
+
+- Existing Overall Health Index
+- Physical Health
+- Mental Wellbeing
+- Cognitive Readiness
+- Recovery
+- Fitness
+- Hydration
+- Thermoregulation
+- Radiation Exposure
+- Active Alerts
+
+Use the existing calculations wherever possible.
+
+---
+
+# 22. HEALTH INDEX ARCHITECTURE
+
+Do not replace the existing Health Index system.
+
+If the application already has:
+
+- Overall Health Index
+- Physical Health Index
+- Recovery Index
+- Mental Health Index
+- Other scores
+
+reuse them.
+
+Where existing component indexes exist, connect them to their corresponding body regions.
+
+Potential conceptual categories include:
+
+### Cardiovascular
+- HR
+- Resting HR
+- HRV
+- Blood Pressure
+
+### Respiratory
+- SpO₂
+- Respiratory Rate
+
+### Recovery
+- Sleep
+- Recovery
+- HRV
+- Fatigue
+- Exercise load
+
+### Mental Wellbeing
+- Mood
+- Stress
+- Energy
+- Fatigue
+
+### Cognitive Readiness
+- PVT
+- N-Back
+- CPT
+- Neuro-symbolic tests
+
+### Fitness
+- Exercise
+- Resistance Load
+- Aerobic Output
+
+### Hydration/Thermoregulation
+- Hydration
+- Temperature
+
+### Radiation
+- Dose
+- Dose Rate
+- Cumulative Exposure
+
+### Clinical/Laboratory
+- Verified clinical/lab measurements
+
+These are conceptual mappings.
+
+Do not create duplicate indexes if equivalent indexes already exist.
+
+---
+
+# 23. PERSONAL BASELINE
+
+The body visualization must be capable of showing:
+
+```text
+Current
+vs
+Personal Baseline
+vs
+Trend
+```
+
+For example:
+
+```text
+HRV
+
+Current: 42 ms
+Baseline: 51 ms
+Deviation: -17.6%
+Status: Attention
+```
+
+Only calculate such comparisons where sufficient baseline data exists.
+
+Do not infer medical diagnosis from baseline deviation alone.
+
+---
+
+# 24. MISSING DATA
+
+If there is no current data for a region, display:
+
+**No recent data**
+
+or:
+
+**Data not available**
+
+Never invent values.
+
+Never use placeholder values that appear to be real physiological measurements.
+
+The body visualization must accurately communicate data availability.
+
+---
+
+# 25. SOURCE TRANSPARENCY
+
+Where practical, show where a measurement came from.
+
+Possible sources:
+
+- Daily Check-In
+- Physical Health
+- Mental Health
+- Fitness
+- Neuro Lab
+- Clinical OCR
+- Medical Report
+- Wearable/Sensor
+- Personal Dosimeter
+- Environmental Sensor
+- NASA Uplink
+- Imported Log
+- Manual Entry
+- Synthetic Simulation
+
+Preserve timestamps.
+
+Do not silently overwrite historical records.
+
+---
+
+# 26. DUPLICATE METRIC HANDLING
+
+Several modules contain the same metric.
+
+Examples:
+
+Heart Rate:
+- Daily Check-In
+- Physical Health
+
+Sleep:
+- Daily Check-In
+- Mental Health
+- Sleep & Recovery
+
+Exercise:
+- Daily Check-In
+- Fitness
+
+Temperature:
+- Physical Health
+- Fitness
+
+Hydration:
+- Physical Health
+- Fitness
+
+SpO₂:
+- Daily Check-In
+- Physical Health
+
+These must not become independent values.
+
+Use one canonical underlying measurement where appropriate, while allowing multiple UI entry points.
+
+---
+
+# 27. HISTORY AND TRENDS
+
+The body visualization should be connected to existing history/trend systems.
+
+When a region is selected, show trends where available.
+
+Examples:
+
+Heart:
+- HR trend
+- HRV trend
+- BP trend
+
+Lungs:
+- SpO₂ trend
+- Respiratory rate trend
+
+Brain:
+- Sleep trend
+- Stress trend
+- Mood trend
+- Cognitive performance trend
+
+Whole Body:
+- Overall Health Index
+- Recovery
+- Hydration
+- Temperature
+- Exercise
+- Radiation
+
+Radiation:
+- Dose history
+- Dose rate
+- Cumulative exposure
+
+---
+
+# 28. BODY ANIMATION
+
+Add subtle medical-monitoring animation.
+
+Possible effects:
+
+- Gentle breathing
+- Subtle heartbeat pulse
+- Soft scanning line
+- Anatomical data flow
+- Subtle region indicators
+- Gentle active-region pulse
+
+Keep animation restrained.
+
+Do NOT:
+
+- Aggressively rotate the body
+- Constantly zoom
+- Add distracting particles
+- Make it resemble a game
+- Reduce readability
+
+The animation should communicate:
+
+> "ASTRA is continuously monitoring astronaut health."
+
+---
+
+# 29. VISUAL DESIGN
+
+The body visualization must inherit the existing ASTRA Health design language.
+
+Use the existing:
+
+- Colors
+- Typography
+- Cards
+- Background
+- Glass/crystal styling
+- Spacing
+- Accent colors
+- Border treatment
+- Shadows
+- Responsive behavior
+
+Do not introduce a completely unrelated design.
+
+The body may use a subtle medical/anatomical luminous style while still fitting naturally into the current dashboard.
+
+Avoid:
+
+- Excessive blur
+- Excessive glow
+- Excessive neon
+- Huge decorative elements
+- Excessive glassmorphism
+- Cartoon anatomy
+- Gaming aesthetics
+
+---
+
+# 30. PLACEMENT
+
+Place the body visualization INSIDE the existing Health Dashboard.
+
+Choose the location that best fits the existing dashboard after inspecting the actual implementation.
+
+Do not create a separate page unless the existing architecture makes it absolutely necessary.
+
+Do not move the entire dashboard.
+
+Do not replace current dashboard sections.
+
+If the dashboard already has a health overview area, integrate the body there.
+
+---
+
+# 31. RESPONSIVE DESIGN
+
+Desktop:
+
+- Show full body at an appropriate size.
+- Allow contextual information beside/around it.
+- Preserve existing dashboard content.
+
+Tablet:
+
+- Scale appropriately.
+- Maintain interaction.
+
+Mobile:
+
+- Keep the full body visible.
+- Allow tap interaction.
+- Use a collapsible/detail panel if necessary.
+- Avoid horizontal scrolling.
+
+Do not break the existing responsive layout.
+
+---
+
+# 32. ACCESSIBILITY
+
+Every interactive region should have:
+
+- Accessible name
+- Keyboard accessibility where practical
+- Focus state
+- Selected state
+- Text alternative
+- Clear status information
+
+Do not rely only on color.
+
+---
+
+# 33. OFFLINE-FIRST REQUIREMENT
+
+ASTRA Health is an offline-first astronaut health system.
+
+The new feature must work with the existing offline architecture.
+
+When offline, users should still be able to:
+
+- Enter health data
+- View stored health data
+- Open the Health Dashboard
+- Interact with the body
+- View stored Health Index values
+- View baselines
+- View trends
+- Review cognitive results
+- Review radiation data
+- Review clinical records already stored locally
+
+Do not make the body visualization dependent on an online API if the underlying data already exists locally.
+
+Do not break offline functionality.
+
+---
+
+# 34. SYNCHRONIZATION
+
+When connectivity returns:
+
+- Preserve local records
+- Synchronize according to the existing architecture
+- Avoid duplicate records
+- Do not delete data because synchronization fails
+- Preserve timestamps and source information
+
+Do not replace the existing synchronization system unless absolutely necessary.
+
+---
+
+# 35. AI SAFETY BOUNDARY
+
+AI may assist with:
+
+- Explaining trends
+- Summarizing health information
+- Summarizing journal notes
+- Providing contextual explanations
+- Organizing clinical-document information
+
+AI must NOT:
+
+- Invent health measurements
+- Diagnose medical conditions
+- Override deterministic alerts
+- Override safety thresholds
+- Modify telemetry
+- Modify baseline data without explicit user/system action
+- Delete health records
+- Replace deterministic calculations
+- Turn missing data into assumed data
+
+Deterministic safety and Health Index logic remain authoritative.
+
+---
+
+# 36. CLINICAL DATA SAFETY
+
+OCR-derived medical information must follow:
+
+```text
+Extracted
+↓
+User Review
+↓
+User Verification
+↓
+Apply
+```
+
+Never automatically treat OCR output as verified clinical truth.
+
+Preserve:
+
+- Extraction confidence where available
+- Original source
+- Timestamp
+- Verification status
+
+---
+
+# 37. ARCHITECTURE REQUIREMENT
+
+Prefer a dedicated component such as:
+
+```text
+InteractiveBodyHealth.tsx
+```
+
+and, if appropriate, a small mapping layer such as:
+
+```text
+bodyHealthMapping.ts
+```
+
+However:
+
+**First inspect the existing architecture.**
+
+If equivalent components already exist, reuse them instead of duplicating functionality.
+
+The new feature should remain modular.
+
+Do not unnecessarily rewrite the existing Health Dashboard.
+
+---
+
+# 38. IMPLEMENTATION PROCESS
+
+Follow this exact workflow.
+
+## STEP 1 — INSPECT
+
+Before editing:
+
+- Find Health Dashboard component
+- Find all health input components
+- Find health data types
+- Find health calculation functions
+- Find Health Index logic
+- Find baseline logic
+- Find trend logic
+- Find alert logic
+- Find local storage
+- Find synchronization
+- Find clinical OCR
+- Find Neuro Lab data
+- Find radiation data
+- Find mission/profile settings
+
+Do not guess the architecture.
+
+---
+
+## STEP 2 — MAP
+
+Create an internal implementation map:
+
+```text
+Input
+→ Existing Data Source
+→ Canonical Metric
+→ Health Category
+→ Anatomical Region
+→ Existing Health Calculation
+→ Dashboard Display
+```
+
+Identify duplicated metrics before writing new code.
+
+---
+
+## STEP 3 — IMPLEMENT
+
+Add only the required components/data mappings.
+
+Do not rebuild unrelated features.
+
+---
+
+## STEP 4 — INTEGRATE
+
+Connect:
+
+```text
+Health Input
+→ Existing Data
+→ Body Region
+→ Existing Health Index
+→ Baseline
+→ Trend
+→ Dashboard
+```
+
+---
+
+## STEP 5 — VERIFY
+
+Check that existing functionality still works.
+
+---
+
+# 39. DO NOT FABRICATE HEALTH DATA
+
+This is critical.
+
+Never create fake physiological values such as:
+
+```text
+Heart Rate: 72
+SpO₂: 98
+Health Index: 94
+```
+
+unless those values already exist in the application data or are generated by the existing synthetic simulation system.
+
+If the application currently uses synthetic/demo data, use that existing source and clearly preserve its semantics.
+
+---
+
+# 40. DO NOT ALTER EXISTING MEDICAL LOGIC
+
+Do not change:
+
+- Existing thresholds
+- Existing clinical rules
+- Existing Health Index formulas
+- Existing baseline algorithms
+- Existing alert rules
+- Existing telemetry calculations
+
+unless a change is absolutely required to expose existing information to the visualization.
+
+If a change is necessary, keep it minimal and explain exactly what was changed.
+
+---
+
+# 41. FINAL HEALTH DASHBOARD EXPERIENCE
+
+The final experience should feel like:
+
+```text
+CURRENT ASTRA HEALTH DASHBOARD
+            +
+INTERACTIVE HUMAN BODY
+            ↓
+User selects anatomical region
+            ↓
+Region highlights
+            ↓
+Relevant existing health data appears
+            ↓
+Health Index / status
+            ↓
+Current metrics
+            ↓
+Personal baseline
+            ↓
+Historical trend
+            ↓
+Data source / timestamp
+```
+
+The user should feel that the body is a **live visual representation of the existing astronaut health data**, not a separate application.
+
+---
+
+# 42. EXAMPLE USER FLOW
+
+Example:
+
+The user opens:
+
+**Daily Health Check-In**
+
+and enters:
+
+```text
+Heart Rate: 76 BPM
+Blood Pressure: 118/78
+SpO₂: 98%
+Exercise: 40 min
+```
+
+These values are stored using the existing health architecture.
+
+The user then opens:
+
+**Health Dashboard**
+
+The body is displayed.
+
+The user clicks:
+
+**HEART**
+
+The Heart region highlights.
+
+The information panel shows the existing data:
+
+```text
+HEART
+
+Heart Rate
+76 BPM
+
+Blood Pressure
+118 / 78 mmHg
+
+HRV
+[Existing value if available]
+
+Health Index
+[Existing calculation]
+
+Baseline
+[Existing baseline]
+
+Trend
+[Existing trend]
+
+Last Updated
+[Timestamp]
+```
+
+The user then clicks:
+
+**LUNGS**
+
+The body changes selection.
+
+The panel shows:
+
+```text
+LUNGS
+
+SpO₂
+98%
+
+Respiratory Rate
+[Existing value if available]
+
+Baseline
+[Existing baseline]
+
+Trend
+[Existing trend]
+```
+
+No separate health system was created.
+
+---
+
+# 43. ANOTHER EXAMPLE — BRAIN
+
+User enters:
+
+```text
+Sleep: 7h 15m
+Mood: 4/5
+Stress: 2/5
+Energy: 4/5
+Fatigue: 2/5
+```
+
+Later they open Health Dashboard and click:
+
+**BRAIN**
+
+The system should surface the existing:
+
+- Sleep
+- Mood
+- Stress
+- Energy
+- Fatigue
+- PVT
+- N-Back
+- CPT
+- Cognitive readiness
+
+where available.
+
+Again, no duplicate data should be created.
+
+---
+
+# 44. RADIATION EXAMPLE
+
+User enters:
+
+```text
+Measurement Type: Dose Equivalent
+Value: [existing user value]
+Unit: mSv
+Source: Personal Dosimeter
+Location: EVA Suit
+Instrument: RAD-CREW-01
+Mission Phase: EVA
+```
+
+The record should become available under:
+
+**Radiation Exposure**
+
+and when the user selects the relevant whole-body/radiation visualization:
+
+```text
+RADIATION EXPOSURE
+
+Current Exposure
+[Existing value]
+
+Dose Type
+Dose Equivalent
+
+Source
+Personal Dosimeter
+
+Location
+EVA Suit
+
+Instrument
+RAD-CREW-01
+
+Mission Phase
+EVA
+
+Cumulative Exposure
+[Existing calculated value]
+
+Trend
+[Existing trend]
+```
+
+Radiation remains a separate dimension.
+
+---
+
+# 45. FINAL TESTING
+
+After implementation, run:
+
+```bash
+npm run build
+```
+
+and:
+
+```bash
+npx tsc --noEmit
+```
+
+Fix any errors introduced by the implementation.
+
+Then test:
+
+### Existing Dashboard
+
+- Loads correctly
+- Existing cards work
+- Existing charts work
+- Existing buttons work
+- Existing filters work
+- Existing health calculations work
+- Existing AI works
+- Existing alerts work
+- Existing navigation works
+
+### New Body
+
+- Full body renders
+- Brain clickable
+- Heart clickable
+- Lungs clickable
+- Liver clickable
+- Kidneys clickable
+- Musculoskeletal region clickable
+- Whole Body clickable
+- Hover states work
+- Keyboard/focus states work
+- Selected state works
+- Context panel works
+- No-data state works
+
+### Data Integration
+
+Test:
+
+1. Enter Heart Rate.
+2. Open Heart.
+3. Verify the same Heart Rate appears.
+
+Test:
+
+1. Enter SpO₂.
+2. Open Lungs.
+3. Verify the same SpO₂ appears.
+
+Test:
+
+1. Enter Sleep.
+2. Open Brain/Recovery.
+3. Verify the same Sleep data appears.
+
+Test:
+
+1. Enter Exercise.
+2. Open Musculoskeletal/Whole Body.
+3. Verify the same Exercise data appears.
+
+Test:
+
+1. Enter Radiation.
+2. Open Radiation/Whole Body.
+3. Verify the same radiation record appears.
+
+Test:
+
+1. Enter cognitive benchmark.
+2. Open Brain.
+3. Verify the cognitive result appears.
+
+---
+
+# 46. FINAL ACCEPTANCE CRITERIA
+
+The implementation is successful only if:
+
+- The existing Health Dashboard remains intact.
+- No existing major feature is removed.
+- No existing health calculation is unnecessarily rewritten.
+- No existing API is unnecessarily changed.
+- No existing AI functionality is broken.
+- No existing NASA telemetry is broken.
+- No existing offline functionality is broken.
+- No duplicate health system is created.
+- All relevant health inputs connect to the shared health architecture.
+- Duplicate metrics use the same underlying data.
+- The body visualization reflects real existing application data.
+- Anatomical regions are interactive.
+- Selected regions show relevant health information.
+- Existing Health Index calculations are reused.
+- Personal baselines are reused.
+- Existing trends are reused.
+- Missing data is clearly shown as missing.
+- OCR data requires verification.
+- Radiation remains a separate health dimension.
+- Cognitive benchmarks remain distinct and traceable.
+- AI cannot override deterministic safety logic.
+- The body visualization is responsive.
+- The feature works offline with locally available data.
+- Build succeeds.
+- TypeScript checking succeeds.
+- No new console/runtime errors are introduced.
+
+---
+
+# 47. MOST IMPORTANT FINAL INSTRUCTION
+
+**DO NOT START BY REBUILDING THE HEALTH DASHBOARD.**
+
+First inspect the existing ASTRA Health codebase.
+
+Then identify the existing health-data sources and calculations.
+
+Then add the smallest, cleanest integration necessary to introduce the interactive body visualization.
+
+The final result must be:
+
+**Existing ASTRA Health Dashboard**
+
++
+
+**Interactive Full-Body Anatomical Health Visualization**
+
++
+
+**Real connection to all relevant existing health inputs**
+
++
+
+**Existing Health Index / Baseline / Trend / Alert systems**
+
+while preserving the existing application.
+
+The body visualization is an additional interface for the existing health intelligence system — **not a replacement for it.**
